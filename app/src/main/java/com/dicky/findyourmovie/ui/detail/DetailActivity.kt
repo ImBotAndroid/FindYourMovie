@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.util.TypedValue
 import android.view.*
 import android.widget.Toast
@@ -103,12 +102,6 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
-    }
-
-    private fun sendData(id: Int?) {
-        val bundle = Bundle()
-        bundle.putParcelable(ReviewActivity.EXTRA_DATA, DataId(id))
-        Log.e("TAG", "Detail: $id, ${DataId(id)}" )
     }
 
     @SuppressLint("NotifyDataSetChanged")

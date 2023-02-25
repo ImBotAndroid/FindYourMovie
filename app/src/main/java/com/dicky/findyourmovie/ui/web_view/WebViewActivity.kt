@@ -2,10 +2,14 @@ package com.dicky.findyourmovie.ui.web_view
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.WindowInsets
+import android.view.WindowManager
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.lifecycle.ViewModelProvider
@@ -28,10 +32,20 @@ class WebViewActivity : AppCompatActivity() {
         binding = ActivityWebViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setUpViewModel()
         setUpView()
     }
 
+    @Suppress("DEPRECATION")
     private fun setUpView() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        }
+    }
+
+    private fun setUpViewModel() {
         webViewViewModel = ViewModelProvider(this, ViewModelFactory.getInstance(this))[WebViewViewModel::class.java]
 
         userPreferences = UserPreferences(this)
@@ -44,6 +58,7 @@ class WebViewActivity : AppCompatActivity() {
     @SuppressLint("SetJavaScriptEnabled")
     private fun setUpWebView(it: LoginResponse) {
         binding.wvAccessApp.loadUrl("https://www.themoviedb.org/authenticate/${it.requestToken}")
+        Log.e("TAG", "setUpWebView: ${it.requestToken}", )
         binding.wvAccessApp.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)

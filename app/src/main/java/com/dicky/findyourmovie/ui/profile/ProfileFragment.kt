@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,25 +13,21 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.dicky.findyourmovie.BuildConfig
 import com.dicky.findyourmovie.R
-import com.dicky.findyourmovie.data.local.RatedValue
 import com.dicky.findyourmovie.data.local.UserData
 import com.dicky.findyourmovie.data.local.UserPreferences
 import com.dicky.findyourmovie.data.response.ResultsItemRated
 import com.dicky.findyourmovie.databinding.FragmentProfileBinding
 import com.dicky.findyourmovie.ui.ViewModelFactory
-import com.dicky.findyourmovie.ui.login.LoginActivity
-import okhttp3.internal.filterList
+import com.dicky.findyourmovie.ui.web_view.WebViewActivity
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var profileViewModel: ProfileViewModel
-
     private lateinit var userPreferences: UserPreferences
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -68,11 +63,16 @@ class ProfileFragment : Fragment() {
         }
 
         binding.btnLogout.setOnClickListener {
-            profileViewModel.deleteSessionIdPref()
-            val intent = Intent(requireActivity(), LoginActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
+            profileViewModel.deleteDataPref()
+            profileViewModel.getNewToken(apiKey).observe(viewLifecycleOwner){
+                if (it.success){
+                    userPreferences.setToken(it)
+                    val intent = Intent(requireActivity(), WebViewActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                }
+            }
         }
     }
 

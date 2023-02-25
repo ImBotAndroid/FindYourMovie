@@ -1,8 +1,6 @@
 package com.dicky.findyourmovie.ui.login
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -22,8 +20,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var userPreferences: UserPreferences
-
-    private lateinit var data: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,8 +62,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         userPreferences = UserPreferences(this)
         val token = ""
-
-        data = this.getSharedPreferences("user_pref", Context.MODE_PRIVATE)
 
         loginViewModel.getNewToken(apiKey).observe(this){ newToken ->
             if (newToken.success){

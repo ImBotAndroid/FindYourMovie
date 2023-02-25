@@ -84,8 +84,9 @@ class Repository private constructor(
         return getSessionId
     }
 
-    fun deleteSessionIdPref() {
+    fun deleteDataPref() {
         userPreferences.deleteSessionId()
+        userPreferences.deleteToken()
     }
 
     private val _saveSearchData = MutableLiveData<List<ResultsItemSearch>>()

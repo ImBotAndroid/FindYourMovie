@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail.DetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_detail"
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_backdrop_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_poster_detail"
+                    android:layout_width="160dp"
+                    android:layout_height="240dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_rating"
+                        android:layout_width="41dp"
+                        android:layout_height="41dp"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:background="@drawable/background_rating"
+                        app:layout_constraintBottom_toBottomOf="@+id/pb_presentage"
+                        app:layout_constraintEnd_toEndOf="@+id/pb_presentage"
+                        app:layout_constraintStart_toStartOf="@+id/pb_presentage"
+                        app:layout_constraintTop_toTopOf="@+id/pb_presentage" />
+
+                    <ProgressBar
+                        android:id="@+id/pb_presentage"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="16dp"
+                        android:indeterminateOnly="false"
+                        android:max="100"
+                        android:progressDrawable="@drawable/rating_precentage_green"
+                        app:layout_constraintStart_toEndOf="@+id/iv_poster_detail"
+                        app:layout_constraintTop_toTopOf="@+id/iv_poster_detail"/>
+
+
+                <ImageButton
+                    android:id="@+id/btn_rating_detail"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/background_rating"
+                    android:src="@drawable/icon_star_border"
+                    app:layout_constraintBottom_toBottomOf="@+id/pb_presentage"
+                    app:layout_constraintStart_toEndOf="@+id/pb_presentage"
+                    app:layout_constraintTop_toTopOf="@+id/pb_presentage" />
+
+                <ImageButton
+                    android:id="@+id/btn_favorite_detail"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/background_rating"
+                    android:src="@drawable/icon_favorite_border"
+                    app:layout_constraintBottom_toBottomOf="@+id/btn_rating_detail"
+                    app:layout_constraintStart_toEndOf="@+id/btn_rating_detail"
+                    app:layout_constraintTop_toTopOf="@+id/btn_rating_detail" />
+
+                <TextView
+                    android:id="@+id/tv_title_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Status"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/iv_poster_detail"
+                    app:layout_constraintTop_toBottomOf="@+id/pb_presentage" />
+
+                <TextView
+                    android:id="@+id/tv_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/green_a400"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/tv_title_status"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_status" />
+
+                <TextView
+                    android:id="@+id/tv_title_revenue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Revenue"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/tv_status"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_status" />
+
+                <TextView
+                    android:id="@+id/tv_revenue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/green_a400"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/tv_title_revenue"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_revenue" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/iv_poster_detail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_rating_bar"
+                    android:layout_width="230dp"
+                    android:layout_height="150dp"
+                    android:background="@color/grey_500"
+                    android:layout_marginTop="16dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="@+id/btn_rating_detail"
+                    app:layout_constraintStart_toStartOf="@+id/btn_rating_detail"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_rating_detail">
+
+                    <ImageButton
+                        android:id="@+id/btn_close_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_close"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RatingBar
+                        android:id="@+id/rating_bar_detail"
+                        style="@style/Widget.AppCompat.RatingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_title_sinopsis"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:text="Sinopsis"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/cv_detail"
+            app:layout_constraintStart_toStartOf="@+id/cv_detail"
+            app:layout_constraintTop_toBottomOf="@id/cv_detail" />
+
+        <TextView
+            android:id="@+id/tv_sinopsis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/tv_title_sinopsis"
+            app:layout_constraintStart_toStartOf="@+id/tv_title_sinopsis"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_sinopsis" />
+
+        <TextView
+            android:id="@+id/tv_sinopsis_movies_null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:text="There is No Sinopsis For This Movie"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="@+id/tv_title_sinopsis"
+            app:layout_constraintStart_toStartOf="@+id/tv_title_sinopsis"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_sinopsis" />
+
+        <TextView
+            android:id="@+id/tv_title_trailer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:text="Trailer Videos"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_sinopsis"
+            app:layout_constraintStart_toStartOf="@+id/tv_sinopsis"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sinopsis" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_trailer_movies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_trailer" />
+
+        <TextView
+            android:id="@+id/tv_trailer_movies_null"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="8dp"
+            android:text="No Trailers Available"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_trailer" />
+
+        <TextView
+            android:id="@+id/tv_title_actor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:text="Aktris &amp; Aktor"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/rv_trailer_movies"
+            app:layout_constraintStart_toStartOf="@+id/rv_trailer_movies"
+            app:layout_constraintTop_toBottomOf="@+id/rv_trailer_movies" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_credits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_actor" />
+
+        <TextView
+            android:id="@+id/tv_title_similar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:text="Similar Movies"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/rv_credits"
+            app:layout_constraintStart_toStartOf="@+id/rv_credits"
+            app:layout_constraintTop_toBottomOf="@+id/rv_credits" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_similar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_similar" />
+
+        <TextView
+            android:id="@+id/tv_similar_movies_null"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="8dp"
+            android:text="No Similar Movies Available"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_similar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

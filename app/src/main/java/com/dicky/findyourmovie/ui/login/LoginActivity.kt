@@ -56,12 +56,20 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun login() {
-        val apiKey = BuildConfig.API_KEY
-        val username = "hibotandroid"
-        val password = "asdf123"
-
         userPreferences = UserPreferences(this)
+        val apiKey = BuildConfig.API_KEY
+        val username = binding.editTextTextPersonName.text.toString()
+        val password = binding.editTextTextPassword.text.toString()
         val token = ""
+
+        when {
+            username.isEmpty() -> {
+                binding.editTextTextPersonName.error = resources.getString(R.string.username_empty_alert)
+            }
+            password.isEmpty() -> {
+                binding.editTextTextPersonName.error = resources.getString(R.string.password_empty_alert)
+            }
+        }
 
         loginViewModel.getNewToken(apiKey).observe(this){ newToken ->
             if (newToken.success){

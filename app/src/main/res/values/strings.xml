@@ -8,4 +8,6 @@
     <string name="bookmark">Bookmark</string>
     <string name="search">Search</string>
     <string name="percent">%</string>
+    <string name="username_empty_alert">Username Tidak Boleh Kosong</string>
+    <string name="password_empty_alert">Password Tidak Boleh Kosong</string>
 </resources>
